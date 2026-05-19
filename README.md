@@ -171,44 +171,6 @@ npm start
 
 ---
 
-## Deploy to Render (Free Tier)
-
-### What Render provides free:
-- 1 Web Service (backend)
-- 1 Static Site or Web Service (frontend)
-- 1 PostgreSQL database (90 days, then $7/month or re-create)
-
-### Steps:
-
-**1. Push to GitHub first** (see GitHub section below)
-
-**2. Create Render account** at https://render.com
-
-**3. Deploy via Blueprint (easiest):**
-- Go to Render Dashboard → New → Blueprint
-- Connect your GitHub repo
-- Render reads `render.yaml` and auto-creates all services
-
-**4. Set environment variables in Render Dashboard:**
-
-For `devcollab-backend` service, add:
-```
-OPENROUTER_API_KEY = sk-or-v1-your-key-here
-```
-All other vars (`DATABASE_URL`, `JWT_SECRET`, `CORS_ALLOWED_ORIGINS`) are auto-set by render.yaml.
-
-**5. After both services deploy, update CORS:**
-
-In `devcollab-backend` env vars on Render:
-```
-CORS_ALLOWED_ORIGINS = https://devcollab-frontend.onrender.com
-FRONTEND_URL = https://devcollab-frontend.onrender.com
-```
-
-**Note:** Free Render services spin down after 15 min of inactivity. First request after sleep takes ~30 seconds.
-
----
-
 ## API Reference
 
 | Method | Endpoint | Auth | Description |
@@ -243,28 +205,3 @@ Uses a single `OPENROUTER_API_KEY`. If one model fails or is rate-limited, autom
 Configured in `application.properties` — edit the `openrouter.models` line to change order or add models.
 
 ---
-
-## Upload to GitHub
-
-```bash
-# Inside the devcollab folder:
-git init
-git add .
-git commit -m "feat: DevCollab AI code review platform"
-
-# Create a new repo on github.com, then:
-git remote add origin https://github.com/YOUR_USERNAME/devcollab.git
-git branch -M main
-git push -u origin main
-```
-
----
-
-## Resume — 4-Line Project Highlight
-
-> **DevCollab — AI-Powered Code Review Platform** | React · TypeScript · Spring Boot · PostgreSQL · OpenRouter AI · WebSocket
-> - Built full-stack code review platform integrating OpenRouter API (Claude 3.5 Sonnet) with automatic model fallback chain across 4 AI providers using a single API key
-> - Implemented real-time multi-user collaboration using STOMP WebSocket protocol; multiple reviewers can add inline comments on live code simultaneously
-> - Designed stateless REST APIs with Spring Boot + JWT authentication, JPA/PostgreSQL persistence, and async AI processing using CompletableFuture
-> - Containerized with Docker Compose for local dev; CI/CD via GitHub Actions; deployed to Render with automated PostgreSQL provisioning via render.yaml blueprint
-
