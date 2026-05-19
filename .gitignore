@@ -1,0 +1,26 @@
+# Environment
+.env
+*.env.local
+
+# Java
+target/
+*.class
+*.jar
+*.war
+.mvn/
+!.mvn/wrapper/maven-wrapper.properties
+
+# Node
+node_modules/
+frontend/build/
+frontend/.env.local
+npm-debug.log*
+
+# IDE
+.idea/
+*.iml
+.vscode/settings.json
+.DS_Store
+
+# Docker
+docker-compose.override.yml
