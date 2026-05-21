@@ -62,5 +62,5 @@ jobs:
           REACT_APP_WS_URL: http://localhost:8080
           CI: true
         run: |
-          npm ci --silent
+          npm ci 
           npm run build
