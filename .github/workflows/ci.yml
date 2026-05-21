@@ -60,7 +60,7 @@ jobs:
         env:
           REACT_APP_API_URL: http://localhost:8080
           REACT_APP_WS_URL: http://localhost:8080
-          CI: false
+          CI: true
         run: |
           npm ci --silent
           npm run build
